@@ -18,7 +18,12 @@ class ViewController: UIViewController {
         btnOK = UIButton(type: UIButtonType.system)
         btnOK?.frame = CGRect(x: 0, y: 20, width: 40, height: 40)
         btnOK?.setTitle("OK", for: UIControlState.normal)
+        btnOK?.backgroundColor = UIColor(colorLiteralRed: 1, green: 1, blue: 0, alpha: 1)
         view.addSubview(btnOK!)
+        
+        btnOK?.addTarget(self, action: #selector(clickBtnOk), for: UIControlEvents.touchUpInside)
+        btnOK?.addTarget(self, action: #selector(clickBtnOk2), for: UIControlEvents.touchDown)
+        
         
         switch traitCollection.userInterfaceIdiom {
         case .pad:
@@ -29,6 +34,18 @@ class ViewController: UIViewController {
             break
         }
     }
+    
+    @objc private func clickBtnOk(sender: UIButton) {
+        print("click Up")
+    }
+    @objc private func clickBtnOk2(sender: UIButton) {
+        print("click Down")
+    }
+  
+    
+    
+    
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
